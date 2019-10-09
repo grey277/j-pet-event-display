@@ -488,6 +488,9 @@ void GeometryVisualizator::drawDiagram(const DiagramDataMapVector& diagramData)
         trailingY.push_back(changeSignalNumber(std::get< 0 >(*it)));
       }
     }
+    if(minXValue == std::numeric_limits<float>::max() && maxXValue != -std::numeric_limits<float>::max()) minXValue = maxXValue - 1;
+    if(minXValue != std::numeric_limits<float>::max() && maxXValue == -std::numeric_limits<float>::max()) maxXValue = minXValue + 1;
+    if(minXValue == std::numeric_limits<float>::max() && maxXValue == -std::numeric_limits<float>::max()) minXValue = maxXValue = 0;
     TMultiGraph* mg = new TMultiGraph();
 
     std::string title = "layer ";
